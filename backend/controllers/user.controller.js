@@ -51,5 +51,9 @@ export const loginUser = async (req, res, next) => {
     res.status(200).json({ user, token });
 }
 
+//get user profile
+export const getUserProfile = async (req, res, next) => {
+    res.status(200).json({ user: req.user });
+}
 
-export default { registerUser, loginUser };
+export default { registerUser, loginUser, getUserProfile };

@@ -2,7 +2,9 @@
  import cors from "cors";
  import dotenv from "dotenv";
  import connectDB from "./config/db.js";
- import userRoutes from "./routes/user.route.js";
+ import userRoutes from "./routes/user.routes.js";
+ import cookieParser from "cookie-parser";   
+ import captainRoutes from "./routes/captain.routes.js";
 
  dotenv.config();
 
@@ -11,6 +13,7 @@
  app.use(cors());
  app.use(express.json());
  app.use(express.urlencoded({ extended: true }));
+ app.use(cookieParser());
 
  connectDB();
 
@@ -19,5 +22,6 @@
  });
 
  app.use("/users", userRoutes);
+ app.use("/captains", captainRoutes);
 
 export default app;

@@ -1,6 +1,7 @@
 import express from "express";
 import { body } from "express-validator";
 import userController from "../controllers/user.controller.js";
+import { authUser } from "../middleware/auth.middleware.js";
 
 const router = express.Router();
 
@@ -17,5 +18,6 @@ router.post("/login", [
     body("password").notEmpty().withMessage("Password is required"),
 ], userController.loginUser);
 
+router.get("/profile", authUser, userController.getUserProfile);
 
 export default router;
